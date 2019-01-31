@@ -21,3 +21,5 @@ pubspec.lock
 
 # Directory created by dartdoc
 doc/api/
+
+bin/steam_key_not_git.key

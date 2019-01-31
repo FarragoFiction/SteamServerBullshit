@@ -11,14 +11,15 @@ Future main() async {
   print('Listening on localhost:${server.port}');
 
   await for (HttpRequest request in server) {
-    testGetting();
+    await testGetting(request);
     request.response
       ..write('Hello, world!')
       ..close();
   }
 }
 
-void testGetting() {
-  http.read("http://farragofiction.com/WranglerNewsposts/jadedResearcher.txt").then(print);
+Future<Null> testGetting(request) async{
+  String resp = await http.read("http://farragofiction.com/WranglerNewsposts/jadedResearcher.txt");
+  request.response..write(resp);
 
 }
