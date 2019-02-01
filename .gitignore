@@ -23,3 +23,4 @@ pubspec.lock
 doc/api/
 
 bin/steam_key_not_git.key
+*.key

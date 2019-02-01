@@ -19,12 +19,15 @@ Future main() async {
 }
 
 Future<String> getKey() async {
-  var config = File('config.txt');
+  var config = File('steam_key_not_git.key');
+  return await config.readAsString();
 }
 
 Future<Null> testGetting(request) async{
   String key = await getKey();
-  String resp = await http.read("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${key}&appid=929640");
+  String url = "http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${key}&appid=929640";
+  print ("url is $url");
+  String resp = await http.read(url);
   request.response..write(resp);
 
 }
