@@ -18,8 +18,13 @@ Future main() async {
   }
 }
 
+Future<String> getKey() async {
+  var config = File('config.txt');
+}
+
 Future<Null> testGetting(request) async{
-  String resp = await http.read("http://farragofiction.com/WranglerNewsposts/jadedResearcher.txt");
+  String key = await getKey();
+  String resp = await http.read("http://api.steampowered.com/ISteamUserStats/GetSchemaForGame/v2/?key=${key}&appid=929640");
   request.response..write(resp);
 
 }
